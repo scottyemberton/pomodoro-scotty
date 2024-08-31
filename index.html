@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+    
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"  content="width=device-width, initial-scale=1.0">
+    <title>25 + 5 Timer</title>
+
+    <!-- g o o g l e  f o n t s -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+    
+    <!-- f o n t  a w e s o m e -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+    <!-- c s s  s t y l e s h e e t -->
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="page-wrapper"></div>
+    <!-- h e a d e r -->
+     <header>
+        <h1>pomodoro</h1>
+     </header>
+
+    <!-- m i n i  d i s p l a y -->
+    <section class="display" id="mini-display">
+        <div id="session-label">Session</div>
+        <span class="separator">|</span>
+        <div id="break-label">Break</div>
+    </section>
+    
+    <!-- p o p  u p  m e n u -->
+    <section class="menu" id="popup-menu">
+        <div class="session-menu">
+            <button id="session-decrement" class="arrow-button">&#9660;</button> <!-- Down arrow -->
+            <div class="length-container">
+            <p id="session-length">25</p>
+            <p>Session Length</p>
+        </div>
+        <button id="session-increment" class="arrow-button">&#9650;</button> <!-- Up arrow -->
+    </div>
+    <div class="break-menu">
+        <button id="break-decrement" class="arrow-button">&#9660;</button> <!-- Down arrow -->
+        <div class="length-container">
+            <p id="break-length">5</p>
+            <p>Break Length</p>
+        </div>
+        <button id="break-increment" class="arrow-button">&#9650;</button> <!-- Up arrow -->
+    </div>
+    <div class="menu-buttons">
+        <button id="save-changes">Save Changes</button>
+        <button id="cancel-changes">Cancel</button>
+    </div>
+</section>
+
+<!-- t i m e r  s e c t i o n -->
+<div class="timer">
+    <div class="circle">
+        <div id="timer-label"></div>
+        <div id="time-left">
+            <p class="display" id="minutes">25</p>
+            <p class="display">:</p>
+            <p class="display" id="seconds">00</p>
+        </div>
+        <div class="controls">
+            <button id="start_stop" onclick="start()"><i class="fa-solid fa-play"></i></button>
+            
+            <button id="reset" type="button"><i class="fa-solid fa-arrow-rotate-left"></i></button>
+            
+        </div>
+    </div>
+</div>
+</div>
+
+<!-- t h e m e  s w i t c h e r -->
+<footer class="color-menu">
+    <div class="menu-container">
+        <input type="checkbox" id="menu-toggle" class="menu-toggle">
+        <label for="menu-toggle" class="menu-button">
+            <span class="arrow">&#9650;</span>
+        </label>
+
+        <div class="color-scheme">
+            <fieldset>
+                <input type="radio" name="theme" id="default" checked>
+                <input type="radio" name="theme" id="neon-night">
+                <input type="radio" name="theme" id="monster">
+                <input type="radio" name="theme" id="k-pop">
+                <input type="radio" name="theme" id="workout">
+                <input type="radio" name="theme" id="sunrise">
+            </fieldset>
+        </div>
+    </div>
+</footer> 
+<audio id="beep" preload="auto" src="https://cdn.freecodecamp.org/testable-projects-fcc/audio/BeepSound.wav"></audio>
+
+<!-- s i t e  t e s t e r -->
+<script src="https://cdn.freecodecamp.org/testable-projects-fcc/v1/bundle.js"></script>
+
+<!-- j a v a s c r i p t -->
+<script src="app.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,534 @@
+:root {
+    --default-bg: #071952;
+    --default-ring: #c63c51;
+    --default-text: #cbeef3;
+    --default-shadow: hsl(227, 86%, 30%);
+    
+    --monster-bg: #1c1c1c;
+    --monster-ring: #31e511;
+    --monster-text: #fffafa;
+    --monster-shadow: hsl(0, 0%, 20%);
+    
+    --neon-night-bg: #411489;
+    --neon-night-ring: #ed0cc4;
+    --neon-night-text: #fffafa;
+    --neon-night-shadow: hsl(266, 78%, 40%);
+    
+    --k-pop-bg: #f8f8f8;
+    --k-pop-ring: #ff9fcb;
+    --k-pop-text: #000;
+    --k-pop-shadow: #a2c2e2;
+    
+    --workout-bg: #1f1f1f;
+    --workout-ring: #ff6f00;
+    --workout-text: #fff;
+    --workout-shadow: hsl(0, 0%, 25%);
+    
+    --sunrise-bg: #00ffff;
+    --sunrise-ring: #e2faa7;
+    --sunrise-text: #333;
+    --sunrise-shadow: hsl(180, 100%, 90%);
+}
+
+
+*,
+*::before,
+*::after {
+    margin: 0;
+    padding: 0;
+}
+
+/* Mobile Responsiveness */
+.page-wrapper {
+    padding: 1px;
+    box-sizing: border-box;
+    font-size: inherit;
+}
+
+html {
+    font-size: clamp(12px, 2vw, 16px);
+    height: 100vh;
+}
+
+@media (max-width: 450px) {
+    #popup-menu {
+        top: 200px;
+        width: 90%;
+        margin: auto;
+    }
+}
+
+h1 {
+    text-align: center;
+    margin: 0;
+    padding: 0;
+    position: relative;
+    top: 15px;
+    width: 100%;
+    box-sizing: border-box;
+    background-color: var(--clr-bg);
+    color: var(--clr-text);
+}
+body {
+    font-family: 'IBM Plex Sans', sans-serif;
+    font-size: 1.25rem;
+    margin: 0;
+    background-color: var(--clr-bg);
+    transition: 0.3s ease-in-out;
+}
+
+/* Mini Display Section */
+#mini-display {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 15px 30px;
+    background-color: var(--clr-bg);
+    border: 2px solid var(--clr-ring);
+    border-radius: 999px;
+    width: fit-content;
+    max-width: 90%;
+    margin: 50px auto;
+    cursor: pointer;
+    position: relative;
+    z-index: 100;
+    box-sizing: border-box;
+    box-shadow: 0px 0px 30px 20px var(--clr-shadow);
+    -webkit-filter: drop-shadow(0px 0px 30px var(--clr-shadow));
+    filter: drop-shadow(0px 0px 30px var(--clr-shadow));
+    gap: 15px;
+}
+
+#session-label, #break-label {
+    color: var(--clr-text);
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+.separator {
+    color: var(--clr-ring);
+    margin: 0 15px;
+    font-size: 1.5rem;
+}
+
+/* Popup Menu Section */
+.menu {
+    display: none;
+    position: fixed;
+    top: 10%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: var(--clr-bg);
+    border: 2px solid var(--clr-ring);
+    border-radius: 12px;
+    padding: 1rem;
+    width: 90%;
+    max-width: 400px;
+    z-index: 200;
+    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.2);
+    transition: opacity 0.3s ease;
+}
+
+#popup-menu {
+    display: none;
+}
+
+#popup-menu:active {
+    display: block;
+}
+
+#mini-display.active ~ .menu {
+    display: block;
+    animation: slideUp 0.3s ease forwards;
+}
+
+@keyframes slideUp {
+    from {
+        transform: translate(-50%, 70%);
+        opacity: 0;
+    }
+    to {
+        transform: translate(-50%, 50%);
+        opacity: 1;
+    }
+}
+
+/* Media Query for Small Screens */
+@media (max-width: 375px) {
+    .menu {
+        top: 50%; /* Move the menu lower on smaller screens */
+        transform: translate(-50%, -60%); /* Adjust the transformation to avoid overlap */
+    }
+    
+    @keyframes slideUp {
+        from {
+            transform: translate(-50%, 80%); /* Start from lower down */
+            opacity: 0;
+        }
+        to {
+            transform: translate(-50%, 70%); /* End slightly above the center */
+            opacity: 1;
+        }
+    }
+}
+
+
+/* Length Container */
+.length-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center; 
+    padding: 10px 0;
+    color: var(--clr-text);
+}
+
+.length-container p:first-child {
+    font-size: 2rem;
+    margin-bottom: 5px;
+}
+
+.length-container p:last-child {
+    font-size: 1rem;
+    opacity: 0.8;
+}
+
+.arrow-button {
+    background: transparent;
+    border: none;
+    font-size: 2rem;
+    color: var(--clr-ring);
+    cursor: pointer;
+}
+
+/* Arrange arrows and length container horizontally */
+.session-menu, .break-menu {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.session-menu .arrow-button, .break-menu .arrow-button {
+    margin: 0 10px;
+}
+
+/* Menu Buttons */
+.menu-buttons {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+
+.menu-buttons button {
+    text-decoration: none;
+    background-color: var(--clr-ring);
+    color: var(--clr-text);
+    border: none;
+    padding: 10px 20px;
+    border-radius: 999px;
+    cursor: pointer;
+    flex: 1;
+    margin: 0 5px;
+    font-size: 1.25rem; 
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+.menu-buttons button:hover {
+    opacity: 0.8;
+}
+
+.menu-buttons button:active {
+    transform: scale(0.95);
+}
+
+/* Timer container */
+.timer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 20rem;
+    height: 20rem;
+    border-radius: 50%;
+    box-shadow: 0px 0px 30px 20px var(--clr-shadow); /* Shadow applied here */
+    background-color: var(--clr-bg);
+    margin: 80px auto;
+    position: relative; /* Ensure that .circle can be positioned absolutely within .timer */
+}
+
+.circle {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 18rem;
+    height: 18rem;
+    border-radius: 50%;
+    background-color: var(--clr-ring);
+    position: absolute; /* Position it inside .timer */
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%); /* Center it within .timer */
+}
+
+.circle::before {
+    content: "";
+    position: absolute;
+    width: 95%;
+    height: 95%;
+    border-radius: 50%;
+    background-color: var(--clr-bg);
+}
+
+/* Time display */
+#time-left {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    z-index: 1;
+    margin-bottom: 1rem;
+    color: var(--clr-text);
+}
+
+
+#time-left p {
+    font-size: 4rem;
+}
+
+#time-left p:nth-of-type(2) {
+    margin-inline: 0.125rem;
+}
+
+/* Controls container */
+.controls {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2.5rem; /* Space between the icons */
+    position: absolute; /* Positioning controls at the bottom of the circle */
+    bottom: 50px; /* Adjust distance from the bottom */
+}
+
+.controls button {
+    background: transparent;
+    border: none;
+    color: var(--clr-text);
+    font-size: 2rem; /* Adjust size of the icons */
+    cursor: pointer;
+}
+
+.controls button:hover {
+    opacity: 0.8;
+}
+
+.controls button:active {
+    transform: scale(0.95);
+}
+
+footer {
+    position: relative; /* Ensure footer is properly positioned */
+    bottom: 0; /* Adjust if needed */
+    width: 100%;
+    background-color: var(--clr-bg);
+    color: var(--clr-text);
+    padding: 1rem;
+}
+
+/* Color Menu Styling */
+.color-menu {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    z-index: 100;
+    background-color: var(--clr-bg);
+    padding: 10px 0;
+}
+
+.color-scheme {
+    height: 0;
+    transition: height 1s ease;
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+    position: relative;
+    overflow: visible;
+}
+
+.color-scheme > fieldset {
+    border: 0;
+    padding: 0 1rem;
+    margin-inline: auto;
+    width: auto;
+    display: flex;
+    gap: 15px;
+    opacity: 0;
+    transition: opacity 1s ease;
+    pointer-events: none;
+}
+
+.color-scheme.expanded > fieldset {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.menu-toggle:checked ~ .color-scheme > fieldset {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.color-scheme input[type="radio"] {
+    appearance: none;
+    width: 1.5rem;
+    height: 1.5rem;
+    border-radius: 50%;
+    outline: 2px solid var(--radio-color);
+    outline-offset: 2px;
+    background-color: transparent;
+    position: relative;
+}
+
+.color-scheme input[type="radio"]:checked {
+    background-color: var(--radio-color);
+}
+
+.color-scheme input[type="radio"]::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0.75rem;
+    height: 0.75rem;
+    border-radius: 50%;
+    background: var(--radio-color);
+    transform: translate(-50%, -50%);
+    opacity: 0;
+}
+
+.color-scheme input[type="radio"]:checked::before {
+    opacity: 1;
+}
+
+
+.color-scheme input[type="radio"]#default {
+    --radio-color: var(--default-ring);
+}
+
+.color-scheme input[type="radio"]#neon-night {
+    --radio-color: var(--neon-night-ring);
+}
+
+.color-scheme input[type="radio"]#monster {
+    --radio-color: var(--monster-ring);
+}
+
+.color-scheme input[type="radio"]#k-pop {
+    --radio-color: var(--k-pop-ring);
+}
+
+.color-scheme input[type="radio"]#workout {
+    --radio-color: var(--workout-ring);
+}
+
+.color-scheme input[type="radio"]#sunrise {
+    --radio-color: var(--sunrise-bg);
+}
+
+.menu-toggle {
+    display: none;
+}
+
+.menu-container {
+    position: relative;
+    height: fit-content;
+    overflow: visible;
+}
+
+.menu-button {
+    position: absolute;
+    bottom: 0px; /* Adjust as needed for spacing */
+    left: 50%;
+    transform: translateX(-50%);
+    width: 30px;
+    height: 30px;
+    background-color: transparent;
+    color: var(--arrow-color);
+    border: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    z-index: 100;
+    transition: bottom 1s ease, transform 1s ease; /* Transition for both movement and rotation */
+}
+
+.menu-toggle:checked ~ .menu-button {
+    bottom: 45px; /* Adjust the distance you want the arrow to move */
+}
+
+.menu-toggle:checked ~ .color-scheme {
+    height: 50%; /* Adjust as needed */
+    transition: ease;
+}
+
+.menu-toggle:checked ~ .menu-button .arrow {
+    transform: rotate(180deg); /* Rotate arrow to point upwards */
+}
+
+/* Arrow styling */
+.arrow {
+    font-size: 25px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 1s ease;
+}
+/* Switch colors based on selected theme */
+:root:has(#default:checked) {
+    --clr-bg: var(--default-bg);
+    --clr-ring: var(--default-ring);
+    --clr-text: var(--default-text);
+    --clr-shadow: var(--default-shadow);
+    --arrow-color: var(--default-ring);
+}
+
+:root:has(#neon-night:checked) {
+    --clr-bg: var(--neon-night-bg);
+    --clr-ring: var(--neon-night-ring);
+    --clr-text: var(--neon-night-text);
+    --clr-shadow: var(--neon-night-shadow);
+    --arrow-color: var(--neon-night-ring);
+}
+
+:root:has(#monster:checked) {
+    --clr-bg: var(--monster-bg);
+    --clr-ring: var(--monster-ring);
+    --clr-text: var(--monster-text);
+    --clr-shadow: var(--monster-shadow);
+    --arrow-color: var(--monster-ring);
+}
+
+:root:has(#k-pop:checked) {
+    --clr-bg: var(--k-pop-bg);
+    --clr-ring: var(--k-pop-ring);
+    --clr-text: var(--k-pop-text);
+    --clr-shadow: var(--k-pop-shadow);
+    --arrow-color: var(--monster-bg);
+}
+
+:root:has(#workout:checked) {
+    --clr-bg: var(--workout-bg);
+    --clr-ring: var(--workout-ring);
+    --clr-text: var(--workout-text);
+    --clr-shadow: var(--workout-shadow);
+    --arrow-color: var(--workout-ring);
+}
+
+:root:has(#sunrise:checked) {
+    --clr-bg: var(--sunrise-bg);
+    --clr-ring: var(--sunrise-ring);
+    --clr-text: var(--sunrise-text);
+    --clr-shadow: var(--sunrise-shadow);
+    --arrow-color: var(--monster-bg);
+}
